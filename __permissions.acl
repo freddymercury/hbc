@@ -1,0 +1,203 @@
+// This Rule is needed for all Participants
+rule HBCNetworkAdminPermissionSystem {
+  description: "can READ the system registries"
+  participant: "ANY"
+  operation: READ
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW  
+}
+
+// #1 Allow the 'System Network Admin' to carry out Identities management
+//    and Network operations
+rule NetworkControlPermission {
+  description:  "give admin ALL access to system resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW  
+}
+rule ParticipantRegistryControlPermission {
+  description:  "give admin ALL access to HBC participant types"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.hbc.participant.**"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionKaiserResearchApp {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.KaiserResearchApp"
+  operation: READ
+  resource: "org.hbc.patientrecord.PatientRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionKaiserPhysicianPIIRecord_READ {
+  description: "can only read PII Record -- PII"
+  participant: "org.hbc.participant.KaiserPhysician"
+  operation: ALL
+  resource: "org.hbc.piirecord.PIIRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionKaiserPhysicianPatientRecord_READ {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.KaiserPhysician"
+  operation: ALL
+  resource: "org.hbc.patientrecord.PatientRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionKaiserPhysicianPIIRecord_CREATE {
+  description: "can only read PII Record -- PII"
+  participant: "org.hbc.participant.KaiserPhysician"
+  operation: ALL
+  resource: "org.hbc.piirecord.**"
+  transaction: "org.hbc.piirecord.CreatePIIRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionKaiserPhysicianPatientRecord_CREATE {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.KaiserPhysician"
+  operation: ALL
+  resource: "org.hbc.patientrecord.**"
+  transaction: "org.hbc.patientrecord.CreatePatientRecord"
+  action: ALLOW  
+}
+
+//////////////////////////////////////////////////////////////////
+//////////// Sutter //////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+rule HBCParticipantPermissionSutterResearchApp {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.SutterResearchApp"
+  operation: READ
+  resource: "org.hbc.patientrecord.PatientRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionSutterPhysicianPIIRecord_READ {
+  description: "can only read PII Record -- PII"
+  participant: "org.hbc.participant.SutterPhysician"
+  operation: ALL
+  resource: "org.hbc.sutter.piirecord.PIIRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionSutterPhysicianPatientRecord_READ {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.SutterPhysician"
+  operation: ALL
+  resource: "org.hbc.patientrecord.PatientRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionSutterPhysicianPIIRecord_CREATE {
+  description: "can only read PII Record -- PII"
+  participant: "org.hbc.participant.SutterPhysician"
+  operation: ALL
+  resource: "org.hbc.sutter.piirecord.**"
+  transaction: "org.hbc.piirecord.CreatePIIRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionSutterPhysicianPatientRecord_CREATE {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.SutterPhysician"
+  operation: ALL
+  resource: "org.hbc.patientrecord.**"
+  transaction: "org.hbc.patientrecord.CreatePatientRecord"
+  action: ALLOW  
+}
+
+//////////////////////////////////////////////////////////////////
+//////////// John Muir //////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+rule HBCParticipantPermissionJohnMuirResearchApp {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.JohnMuirResearchApp"
+  operation: READ
+  resource: "org.hbc.patientrecord.PatientRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionJohnMuirPhysicianPIIRecord_READ {
+  description: "can only read PII Record -- PII"
+  participant: "org.hbc.participant.JohnMuirPhysician"
+  operation: ALL
+  resource: "org.hbc.johnmuir.piirecord.PIIRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionJohnMuirPhysicianPatientRecord_READ {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.JohnMuirPhysician"
+  operation: ALL
+  resource: "org.hbc.patientrecord.PatientRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionJohnMuirPhysicianPIIRecord_CREATE {
+  description: "can only read PII Record -- PII"
+  participant: "org.hbc.participant.JohnMuirPhysician"
+  operation: ALL
+  resource: "org.hbc.johnmuir.piirecord.**"
+  transaction: "org.hbc.piirecord.CreatePIIRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionJohnMuirPhysicianPatientRecord_CREATE {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.JohnMuirPhysician"
+  operation: ALL
+  resource: "org.hbc.patientrecord.**"
+  transaction: "org.hbc.patientrecord.CreatePatientRecord"
+  action: ALLOW  
+}
+
+
+//////////////////////////////////////////////////////////////////
+//////////// Valley Medical //////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+rule HBCParticipantPermissionValleyMedicalResearchApp {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.ValleyMedicalResearchApp"
+  operation: READ
+  resource: "org.hbc.patientrecord.PatientRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionValleyMedicalPhysicianPIIRecord_READ {
+  description: "can only read PII Record -- PII"
+  participant: "org.hbc.participant.ValleyMedicalPhysician"
+  operation: ALL
+  resource: "org.hbc.valleymedical.piirecord.PIIRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionValleyMedicalPhysicianPatientRecord_READ {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.ValleyMedicalPhysician"
+  operation: ALL
+  resource: "org.hbc.patientrecord.PatientRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionValleyMedicalPhysicianPIIRecord_CREATE {
+  description: "can only read PII Record -- PII"
+  participant: "org.hbc.participant.ValleyMedicalPhysician"
+  operation: ALL
+  resource: "org.hbc.valleymedical.piirecord.**"
+  transaction: "org.hbc.piirecord.CreatePIIRecord"
+  action: ALLOW  
+}
+
+rule HBCParticipantPermissionValleyMedicalPhysicianPatientRecord_CREATE {
+  description: "can only read Patient Record -- no PII"
+  participant: "org.hbc.participant.ValleyMedicalPhysician"
+  operation: ALL
+  resource: "org.hbc.patientrecord.**"
+  transaction: "org.hbc.patientrecord.CreatePatientRecord"
+  action: ALLOW  
+}
